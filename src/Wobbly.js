@@ -47,7 +47,7 @@ const Wobbly = () => {
               scale: interpolate(valuesCircleScale[i].value, [0, 1], [0, 1]),
             },
             {
-              translateY: interpolate(valuesCircleY[i].value, [0, 1], [0, -10]),
+              translateY: interpolate(valuesCircleY[i].value, [0, 1], [0, 1]),
             },
           ],
         };
@@ -82,16 +82,16 @@ const Wobbly = () => {
   const _toBend = () => {
     leftToBend.value = withDelay(
       800,
-      withTiming(-30, { duration: 295 }, () => {
-        leftToBend.value = withTiming(30, { duration: 295 }, () => {
+      withTiming(-30, { duration: 310 }, () => {
+        leftToBend.value = withTiming(30, { duration: 310 }, () => {
           leftToBend.value = withTiming(0);
         });
       })
     );
     rightToBend.value = withDelay(
       800,
-      withTiming(30, { duration: 295 }, () => {
-        rightToBend.value = withTiming(-30, { duration: 295 }, () => {
+      withTiming(30, { duration: 310 }, () => {
+        rightToBend.value = withTiming(-30, { duration: 310 }, () => {
           rightToBend.value = withTiming(0);
         });
       })
@@ -105,20 +105,22 @@ const Wobbly = () => {
         i * 100,
         withDelay(
           800,
-          withTiming(1, { duration: 295 }, () => {
-            valuesCircleY[i].value = withTiming(0, {}, () => {
-              valuesCircleScale[i].value = withDelay(
-                200,
-                withTiming(0, {}, () => {
-                  firstPartOfTick.value = withTiming(1);
-                  secondPartOfTick.value = withDelay(
-                    70,
-                    withTiming(1, {}, () => {
-                      textDoneValue.value = withTiming(1);
-                    })
-                  );
-                })
-              );
+          withTiming(-10, { duration: 295 }, () => {
+            valuesCircleY[i].value = withTiming(10, {}, () => {
+              valuesCircleY[i].value = withTiming(0, {}, () => {
+                valuesCircleScale[i].value = withDelay(
+                  200,
+                  withTiming(0, {}, () => {
+                    firstPartOfTick.value = withTiming(1);
+                    secondPartOfTick.value = withDelay(
+                      60,
+                      withTiming(1, {}, () => {
+                        textDoneValue.value = withTiming(1);
+                      })
+                    );
+                  })
+                );
+              });
             });
           })
         )
