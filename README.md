@@ -10,7 +10,7 @@ https://user-images.githubusercontent.com/94455967/194392959-38a30f09-c10e-4873-
 
 </div>
 
-#### translated to react-native-skia
+#### translated to react-native-reanimated
 
 ### Hire us
 
